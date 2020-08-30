@@ -42,7 +42,7 @@ app.set('port', port);
 app.use('/user', user);
 
 app.get('/*', (req, res) => {
-   res.send(path.join('index.html'));
+   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
 const server = http.createServer(app);
