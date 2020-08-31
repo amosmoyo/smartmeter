@@ -1,0 +1,53 @@
+<div class="container pt-3">
+  <div class="text-center animate__animated animate__bounceInRight mb-3">
+    <span class="d-block"><i class="fa fa-user"></i></span>
+    <h1 style="color: green;">smArtUI</h1>
+    <p class="text-success mb-2 font-weight-bold">User's Point</p>
+    <p class="lead mb-2" *ngIf="!loading">Please Login Here...</p>
+    <p class="lead mb-2" *ngIf="loading">Loading...</p>
+  </div>
+  <br>
+  <mat-spinner *ngIf="loading" class="amos"></mat-spinner>
+  <div class="row justify-content-center" *ngIf="!loading">
+    <div class="col-md-8">
+      <div>
+        <form #login="ngForm" [matchValue]="['password','confirmPassword']" (ngSubmit)="save(login)">
+
+          <div class="row justify-content-around">
+            <div class="col-md-5">
+              <mat-form-field class="input">
+                <input matInput type="email" placeholder="email(required)" name="email" ngModel #email="ngModel"
+                  required email class="p-0 m-0">
+              </mat-form-field>
+              <mat-error *ngIf="email.invalid && (email.touched || email.dirty)" class="mt-0">
+                <em *ngIf="email.errors.required">email is required</em>
+                <em *ngIf="email.errors.email">enter a valid email</em>
+              </mat-error>
+            </div>
+            <div class="col-md-5">
+              <mat-form-field class="input">
+                <input matInput type="password" placeholder="password(required)" name="password" ngModel
+                  #password="ngModel" required minlength="4" class="p-0 m-0">
+              </mat-form-field>
+              <mat-error *ngIf="password.invalid && (password.touched || password.dirty)" class="mt-0">
+                <em *ngIf="password.errors.required">password is required</em>
+                <em *ngIf="password.errors.minlength">password is too short</em>
+              </mat-error>
+            </div>
+          </div>
+
+          <div>
+            <div style="width: 80%;" class="mx-auto">
+              <button mat-raised-button
+                style="width: 100%; display: block; background-color: #28a745; color: #ffffff" [disabled]="login.invalid">Save</button>
+              <button mat-raised-button
+                style="width: 100%; display: block; background-color: #333534; color: #ffffff; margin-top: 10px;">cancel</button>
+                <p class="mt-2 text-success">DON'T HAVE AN ACCOUNT? PLAESE <em class="text-danger" [routerLink]="['/users/signup']" style="cursor: pointer;">REGISTER</em></p>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

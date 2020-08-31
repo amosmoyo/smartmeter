@@ -1,0 +1,18 @@
+.input {
+  width: 100%;
+}
+
+.error input {
+  background-color: rgb(241, 168, 168);
+}
+
+.fa {
+  font-size: 1.4em;
+  color: #450f5a;
+}
+
+.amos {
+  position: relative;
+  margin-left: 50%;
+  margin-right: 50%;
+}

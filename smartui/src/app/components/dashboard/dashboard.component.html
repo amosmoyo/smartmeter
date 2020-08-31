@@ -1,0 +1,40 @@
+<div class="container">
+  <header class="border border-success" style="border-radius: 10px;">
+   <div  class="p-2">
+     <div class="text-center">
+      <h3 style="color: green;">smArtUI</h3>
+      <p>User Details</p>
+     </div>
+     <div class="row mb-2 justify-content-between">
+      <div class="col-sm-5"><button mat-raised-button style="color:#28a745;">Created~ {{user?.createdAt | date: 'shortDate' }}</button></div>
+      <div class="col-sm-5"><button mat-raised-button style="color: #28a745;">ID~ {{user?._id}}</button></div>
+    </div>
+     <div class="row mb-2 justify-content-between" *ngIf="user">
+      <div class="col-sm-5"><i class="fa fa-envelope-o"></i>~ {{user?.email}}</div>
+      <div class="col-sm-5"><i class="fa fa-user"></i>~ {{user?.userName}}</div>
+    </div>
+   </div>
+  </header>
+  <br>
+  <br>
+  <main>
+    <h2 class="text-center "><span class="bg-success p-2 text-light border rounded">My SmartMeter</span></h2>
+    <div>
+      <h4 class="mt-2 mb-0"><span class="bg-info text-light border px-2"  style="border-radius: 10px;">Electricity</span></h4>
+      <div class="border border-info" style="border-radius: 10px;">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos soluta maiores aliquam nostrum distinctio fuga velit quaerat, error ipsum enim, qui voluptates nemo esse. Quaerat maxime similique harum rem officiis quibusdam suscipit iste accusantium ducimus excepturi, repellendus voluptatem quidem natus, nobis iure expedita asperiores cum, eaque temporibus tenetur vero corrupti.</div>
+    </div>
+    <div>
+      <h4 class="mt-2 mb-0"><span class="bg-danger text-light border px-2"  style="border-radius: 10px;">Gas</span></h4>
+      <div class="border border-danger" style="border-radius: 10px;">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, officia. Officia nemo molestias excepturi eaque! Ut, necessitatibus consequatur eveniet debitis quisquam adipisci culpa incidunt eos eum rem possimus non quod architecto voluptate nulla animi provident sequi natus dolorum tempora voluptatibus in labore enim explicabo! Repellat voluptas corrupti adipisci est quod.
+      </div>
+    </div>
+    <div>
+      <h4 class="mt-2 mb-0"><span class="bg-warning text-light border px-2"  style="border-radius: 10px;">Gas</span></h4>
+      <div class="border border-warning" style="border-radius: 10px;">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam magni, molestias consectetur ipsam delectus ut distinctio doloremque laudantium nulla animi cumque? Consequuntur amet, impedit quaerat placeat fugit aliquid suscipit doloribus laborum est maxime dolores facilis optio ipsam quo nam? Maxime quod magni est. Blanditiis quae culpa quam quos tempore fugiat?
+      </div>
+    </div>
+  </main>
+</div>
