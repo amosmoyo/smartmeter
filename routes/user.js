@@ -31,7 +31,7 @@ router.route('/register').post(async(req, res) => {
     res.json(newAdmin);
 
   } catch (error) {
-    res.json({success: false, message: error.message});
+    res.status(400).json({success: false, message: 'User already exits'});
   }
 
 });
@@ -44,11 +44,11 @@ router.route('/login').post( async(req, res) => {
     console.log(user) ;
 
     if(!user) {
-      return res.json({success: false, message: 'User does not exist'});
+      return res.status(400).json({success: false, message: 'User does not exist'});
     }
 
     if(!bycript.compareSync(req.body.password, user.password)) {
-      return res.json({success: false, message: 'The email or password you are using is invalid'});
+      return res.status(400).json({success: false, message: 'The email or password you are using is invalid'});
     }
 
     if (bycript.compareSync(req.body.password, user.password)) {
@@ -57,7 +57,7 @@ router.route('/login').post( async(req, res) => {
         expiresIn: '1h'
       });
 
-      res.json({
+      res.status(200).json({
         success: true,
         token: `JWT ${ token}`,
         user: {
