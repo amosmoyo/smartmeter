@@ -1,40 +1,181 @@
 <div class="container">
-  <header class="border border-success" style="border-radius: 10px;">
-   <div  class="p-2">
-     <div class="text-center">
-      <h3 style="color: green;">smArtUI</h3>
-      <p>User Details</p>
-     </div>
-     <div class="row mb-2 justify-content-between">
-      <div class="col-sm-5"><button mat-raised-button style="color:#28a745;">Created~ {{user?.createdAt | date: 'shortDate' }}</button></div>
-      <div class="col-sm-5"><button mat-raised-button style="color: #28a745;">ID~ {{user?._id}}</button></div>
-    </div>
-     <div class="row mb-2 justify-content-between" *ngIf="user">
-      <div class="col-sm-5"><i class="fa fa-envelope-o"></i>~ {{user?.email}}</div>
-      <div class="col-sm-5"><i class="fa fa-user"></i>~ {{user?.userName}}</div>
-    </div>
-   </div>
-  </header>
   <br>
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <header class="border border-success" style="border-radius: 10px;">
+        <div  class="p-2">
+          <div class="text-center">
+           <h3 style="color: green;" class="p-0 mb-0">smArtUI</h3>
+           <p>User Details</p>
+          </div>
+          <div class="row mb-2 justify-content-between">
+           <div class="col-sm-5 mb-1"><button mat-raised-button style="color:#28a745;">Created~ {{user?.createdAt | date: 'shortDate' }}</button></div>
+           <div class="col-sm-5 mb-1"><button mat-raised-button style="color: #28a745;">ID~ {{user?._id}}</button></div>
+         </div>
+          <div class="row mb-2 justify-content-between" *ngIf="user">
+           <div class="col-sm-5"><i class="fa fa-envelope-o"></i>~ {{user?.email}}</div>
+           <div class="col-sm-5"><i class="fa fa-user"></i>~ {{user?.userName}}</div>
+         </div>
+        </div>
+       </header>
+       <br>
+       <br>
+       <main>
+         <h2 class="text-center "><span class="bg-success p-2 text-light border rounded">My SmartMeter</span></h2>
+         <br>
+         <div >
+           <div class="row border border-warning" style="border-radius: 10px;">
+             <div class="col-md-3 align-self-center">
+               <div class="row align-items-center">
+                 <div class="col-md-10 align-self-center text-center">
+                   <div class="border rounded-pill p-4 bg-secondary text-light">
+                     <h2>Today</h2>
+                     <p>{{amount | currency:'KSH ': 'symbol':'1.2-2'}}</p>
+                     <p>{{ time | date: 'hh:mm:ss a'}}</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-7">
+               <br>
+               <div class="row">
+                 <div class="col-1 mr-0">
+                   <p style="font-size: 1.2rem; color: rgb(16, 4, 59);"><i class="fa fa-bolt"></i></p>
+                 </div>
+                 <div class="col-10">
+                   <div class="progress mb-2" style="height: 30px;">
+                     <div class="progress-bar bg-danger  progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"> 50% Power Usage</div>
+                   </div>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-1 mr-0">
+                   <p style="font-size: 1.2rem; color: rgb(16, 4, 59);"><i class="fa fa-fire"></i></p>
+                 </div>
+                 <div class="col-10">
+                   <div class="progress mb-2" style="height: 30px;">
+                     <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">25% Gas Remain</div>
+                   </div>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-1 mr-0">
+                   <p style="font-size: 1.2rem; color: rgb(16, 4, 59);;"><i class="fa fa-shower"></i></p>
+                 </div>
+                 <div class="col-10">
+                   <div class="progress mb-2" style="height: 30px;">
+                     <div class="progress-bar progress-bar-striped bg-secondary progress-bar-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">80% Water Used</div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <br>
+         <div class="mt-2 border border-primary" style="padding-bottom: 100px; border-radius: 10px;">
+           <button mat-raised-button color="primary"  data-toggle="collapse" data-target="#multiCollapseExample2"  style="width: 50%;" class="m-2">Hello {{user.fname}} View Metrics</button>
+           <div class="collapse show m-2" id="multiCollapseExample2">
+             <div>
+               <br>
+               <div class="clearfix"><button class="btn btn-warning text-light float-right mr-2">Total Payout: {{total | currency: 'KSH ':'symbol': '1.2-2'}}</button>
+               </div>
+               <br>
+               <div class="clearfix mb-0">
+                 <p class="float-left"><button class="btn btn-info">Filter By</button></p>
+                 <button class="btn btn-success float-right" (click)="showAll()">Show All</button>
+               </div>
+               <div class="row justify-content-around mb-0">
+                 <div class="col-sm-3 mb-1">
+                   <div class="row">
+                     <form #name="ngForm" (ngSubmit)="save(name.value)" class="col-md-12 clearfix">
+                       <br>
+                       <div class="form-group col-md-12 float-right">
+                         <label>Name</label>
+                         <div class="input-group">
+                           <select type="text" class="form-control form-control-sm" name="search" ngModel #search="ngModel" placeholder="select filter option">
+                             <option  value="all">All</option>
+                             <option value="Power">Electricity</option>
+                             <option value="Gas">Gas</option>
+                             <option value="Water">Water</option>
+                           </select>
+                           <div class="input-group-append">
+                             <button type="submit" class="btn btn-sm btn-success text-light" [title]="'Click to filter'">Filter</button>
+                           </div>
+                         </div>
+
+                       </div>
+                     </form>
+                   </div>
+                 </div>
+                 <div class="col-sm-3 mb-0">
+                   <div class="row">
+                     <form #month="ngForm" (ngSubmit)="save(month.value)" class="col-md-12">
+                       <br>
+                       <div class="form-group col-md-12">
+                         <label>Month</label>
+                         <div class="input-group">
+                           <select type="text" class="form-control form-control-sm" name="search" ngModel #search="ngModel" placeholder="select filter option">
+                             <option  value="all">All</option>
+                             <option value="January">January</option>
+                             <option value="February">February</option>
+                             <option value="March">March</option>
+                           </select>
+                           <div class="input-group-append">
+                             <button type="submit" class="btn btn-sm btn-success text-light">Filter</button>
+                           </div>
+                         </div>
+
+                       </div>
+                     </form>
+                   </div>
+                 </div>
+                 <div class="col-sm- mb-0">
+                   <div class="row">
+                     <form #date="ngForm" (ngSubmit)="save(date.value)" class="col-md-12">
+                       <br>
+                       <div class="form-group col-md-12">
+                         <label>Date</label>
+                         <div class="input-group">
+                           <input type="date" class="form-control form-control-sm" name="search" ngModel #search="ngModel" placeholder="Date" required>
+                           <div class="input-group-append">
+                             <button type="submit" [disabled]="date.invalid" class="btn btn-sm btn-success text-light">Filter</button>
+                           </div>
+                         </div>
+                       </div>
+                     </form>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="table-responsive">
+               <table class="table table-striped table-dark">
+                 <thead>
+                   <tr>
+                     <th class="col">Name</th>
+                     <th class="col">Month</th>
+                     <th class="col">Date</th>
+                     <th class="col">kwh</th>
+                     <th class="col">Hours</th>
+                   </tr>
+                 </thead>
+                 <tbody *ngIf="metrics">
+                   <tr *ngFor="let data of metricsList">
+                     <td>{{data?.name}}</td>
+                     <td>{{data?.Month}}</td>
+                     <td>{{data?.Date}}</td>
+                     <td>{{data?.kwh}}</td>
+                     <td>{{data?.time}}</td>
+                   </tr>
+                   <tr *ngIf="!metricsList">
+                     <td colspan-4 class="text-danger">No Data for the requested metric</td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+           </div>
+         </div>
+       </main>
+    </div>
+  </div>
   <br>
-  <main>
-    <h2 class="text-center "><span class="bg-success p-2 text-light border rounded">My SmartMeter</span></h2>
-    <div>
-      <h4 class="mt-2 mb-0"><span class="bg-info text-light border px-2"  style="border-radius: 10px;">Electricity</span></h4>
-      <div class="border border-info" style="border-radius: 10px;">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos soluta maiores aliquam nostrum distinctio fuga velit quaerat, error ipsum enim, qui voluptates nemo esse. Quaerat maxime similique harum rem officiis quibusdam suscipit iste accusantium ducimus excepturi, repellendus voluptatem quidem natus, nobis iure expedita asperiores cum, eaque temporibus tenetur vero corrupti.</div>
-    </div>
-    <div>
-      <h4 class="mt-2 mb-0"><span class="bg-danger text-light border px-2"  style="border-radius: 10px;">Gas</span></h4>
-      <div class="border border-danger" style="border-radius: 10px;">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, officia. Officia nemo molestias excepturi eaque! Ut, necessitatibus consequatur eveniet debitis quisquam adipisci culpa incidunt eos eum rem possimus non quod architecto voluptate nulla animi provident sequi natus dolorum tempora voluptatibus in labore enim explicabo! Repellat voluptas corrupti adipisci est quod.
-      </div>
-    </div>
-    <div>
-      <h4 class="mt-2 mb-0"><span class="bg-warning text-light border px-2"  style="border-radius: 10px;">Gas</span></h4>
-      <div class="border border-warning" style="border-radius: 10px;">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam magni, molestias consectetur ipsam delectus ut distinctio doloremque laudantium nulla animi cumque? Consequuntur amet, impedit quaerat placeat fugit aliquid suscipit doloribus laborum est maxime dolores facilis optio ipsam quo nam? Maxime quod magni est. Blanditiis quae culpa quam quos tempore fugiat?
-      </div>
-    </div>
-  </main>
 </div>

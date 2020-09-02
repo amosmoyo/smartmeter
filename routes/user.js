@@ -74,8 +74,7 @@ router.route('/login').post( async(req, res) => {
     }
 
   } catch (error) {
-    console.log('amos moyo amos');
-    res.json({success: false, message: error.message});
+    res.status(4000).json({success: false, message: error.message});
   }
 });
 

@@ -1,6 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-spinner *ngIf="loading" class="amos"></mat-spinner>
 <app-navbar *ngIf="!loading"></app-navbar>
-<div style="padding-top: 10vh;" *ngIf="!loading" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''" class="animate__animated animate__fadeInRight">
+<div style="padding-top: 10vh; min-height: 100vh;" *ngIf="!loading" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''" class="animate__animated animate__fadeInRight">
   <router-outlet #o="outlet"></router-outlet>
 </div>
+<app-footer *ngIf="!loading"></app-footer>

@@ -16,3 +16,12 @@ export interface Itoken {
   token: string;
   user: Iuser;
 }
+
+export interface Imetrics {
+  name: string;
+  Month: string;
+  Date: string;
+  kwh: number;
+  time: number;
+  total?:number;
+}

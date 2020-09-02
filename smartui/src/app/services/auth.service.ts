@@ -108,12 +108,12 @@ export class AuthService {
   }
 
   // get profile data
-  profile() {
+  profile(): Observable<Iuser> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
-    return this.http.get(`${url}/dashboard`);
+    return this.http.get<Iuser>(`${url}/dashboard`);
   }
 
   // auth authefication

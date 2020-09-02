@@ -7,11 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Material } from '../material/material.module';
 import { MatchValueDirective } from './match-value.directive';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { AuthGuardGuard } from './auth-guard.guard';
+import { UserData } from './user.resolver';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'dashboard', component: DashboardComponent}
+  { path: 'dashboard', component: DashboardComponent, resolve: { user: UserData}, canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({

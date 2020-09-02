@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
   <div class="container">
-    <a href="" class="navbar-brand">
-      <img src="./assets/images/smart-meter-illustration-600w-327190067.jpg" width="30" height="30" alt="'thedscku'">
+    <a href="" class="navbar-brand text-success font-weight-bold border border-warning pr-1 rounded">
+      <img src="./assets/images/smart-meter-illustration-600w-327190067.jpg" width="30" height="30" alt="'thedscku'"> smArtUI
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#amaya">
@@ -12,12 +12,12 @@
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" >
-          <a href="" [routerLink]="['/home']" routerLinkActive="active" class="nav-link">Home</a>
+          <a href="" [routerLink]="['/home']" routerLinkActive="active" class="nav-link" style="font-size: 1.4em;"><i class="fa fa-home"></i></a>
         </li>
       </ul>
 
       <div class="navbar-header ml-auto">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav center-nav">
           <li class="nav-item" *ngIf="isAuth">
             <a href="" class="nav-link" [routerLink]="['/users/dashboard']" routerLinkActive="active"><i class="fa fa-user"></i> Welcome</a>
           </li>

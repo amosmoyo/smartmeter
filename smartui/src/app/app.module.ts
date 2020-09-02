@@ -11,13 +11,15 @@ import { HttpErrorsComponent } from './components/http-errors/http-errors.compon
 import { ErrorInterCeptor } from './auth.interceptor';
 import { ErrorComponent } from './components/error/error.component';
 import { UserInterceptor } from './user.interceptor';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ErrorComponent,
-    HttpErrorsComponent
+    HttpErrorsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

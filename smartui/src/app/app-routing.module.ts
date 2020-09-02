@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { Material } from './components/material/material.module';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ HomeComponent, PagenotfoundComponent ],
-  imports: [RouterModule.forRoot(routes) ],
+  imports: [RouterModule.forRoot(routes), Material ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

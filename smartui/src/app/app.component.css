@@ -1,6 +1,13 @@
 .amos {
   position: relative;
   top: 40vh;
-  margin-left: 50%;
-  margin-right: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:host {
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  background-color: #000;
 }

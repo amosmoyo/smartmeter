@@ -2,7 +2,7 @@
   <div class="text-center animate__animated animate__bounceInRight mb-2">
     <span class="d-block"><i class="fa fa-user"></i></span>
     <h1 style="color: green;">smArtUI</h1>
-    <p class="text-success mb-2 font-weight-bold">User's Point</p>
+    <p class="text-info mb-2 font-weight-bold">User's Point</p>
     <p class="lead mb-2" *ngIf="!loading">Please Register Here...</p>
     <p class="lead mb-2" *ngIf="loading">Loading...</p>
   </div>
@@ -80,7 +80,7 @@
 
           <div>
             <div style="width: 80%;" class="mx-auto">
-              <button mat-raised-button style="width: 100%; display: block; background-color: #28a745; color: #ffffff"
+              <button mat-raised-button style="width: 100%; display: block; background-color: rgb(245, 6, 245); color: #ffffff"
                 [disabled]="signup.invalid">Save</button>
               <button mat-raised-button
                 style="width: 100%; display: block; background-color: #333534; color: #ffffff; margin-top: 10px;">cancel</button>
