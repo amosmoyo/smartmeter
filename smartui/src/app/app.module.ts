@@ -9,17 +9,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { Material } from './components/material/material.module';
 import { HttpErrorsComponent } from './components/http-errors/http-errors.component';
 import { ErrorInterCeptor } from './auth.interceptor';
-import { ErrorComponent } from './components/error/error.component';
 import { UserInterceptor } from './user.interceptor';
 import { FooterComponent } from './components/footer/footer.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ErrorComponent,
     HttpErrorsComponent,
-    FooterComponent
+    FooterComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     Material
   ],
-  entryComponents: [HttpErrorsComponent],
+  entryComponents: [HttpErrorsComponent, DialogComponent],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterCeptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: UserInterceptor, multi: true}

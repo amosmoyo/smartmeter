@@ -73,7 +73,7 @@
          </div>
          <br>
          <div class="mt-2 border border-primary" style="padding-bottom: 100px; border-radius: 10px;">
-           <button mat-raised-button color="primary"  data-toggle="collapse" data-target="#multiCollapseExample2"  style="width: 50%;" class="m-2">Hello {{user.fname}} View Metrics</button>
+           <button mat-raised-button color="primary"  data-toggle="collapse" data-target="#multiCollapseExample2"  class="m-2">Hello {{user.fname}} Your View Metrics</button>
            <div class="collapse show m-2" id="multiCollapseExample2">
              <div>
                <br>
@@ -92,14 +92,14 @@
                        <div class="form-group col-md-12 float-right">
                          <label>Name</label>
                          <div class="input-group">
-                           <select type="text" class="form-control form-control-sm" name="search" ngModel #search="ngModel" placeholder="select filter option">
+                           <select type="text" class="form-control form-control-sm" name="search" ngModel #search="ngModel" placeholder="select filter option" required>
                              <option  value="all">All</option>
                              <option value="Power">Electricity</option>
                              <option value="Gas">Gas</option>
                              <option value="Water">Water</option>
                            </select>
                            <div class="input-group-append">
-                             <button type="submit" class="btn btn-sm btn-success text-light" [title]="'Click to filter'">Filter</button>
+                             <button type="submit" class="btn btn-sm btn-success text-light" [title]="'Click to filter'" (click)="openDialog()" [disabled]="name.invalid">Filter</button>
                            </div>
                          </div>
 
@@ -114,14 +114,14 @@
                        <div class="form-group col-md-12">
                          <label>Month</label>
                          <div class="input-group">
-                           <select type="text" class="form-control form-control-sm" name="search" ngModel #search="ngModel" placeholder="select filter option">
+                           <select type="text" class="form-control form-control-sm" name="search" ngModel #search="ngModel" placeholder="select filter option" required>
                              <option  value="all">All</option>
                              <option value="January">January</option>
                              <option value="February">February</option>
                              <option value="March">March</option>
                            </select>
                            <div class="input-group-append">
-                             <button type="submit" class="btn btn-sm btn-success text-light">Filter</button>
+                             <button type="submit" class="btn btn-sm btn-success text-light" [disabled]="month.invalid">Filter</button>
                            </div>
                          </div>
 

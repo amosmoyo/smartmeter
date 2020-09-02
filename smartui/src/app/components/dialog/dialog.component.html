@@ -1,0 +1,9 @@
+<h2 mat-dialog-title class="text-info" style="text-decoration: underline; text-transform: uppercase;">summary options</h2>
+<mat-dialog-content class="border border-info rounded m-1">
+  <p class="text-uppercase">Hello <span class="font-weight-bold, text-success">{{data.name}}</span> your total expenditure for the list you have ordered is</p>
+  <button class="btn btn-lg btn-warning text-white mb-2">{{data.message | currency: 'KSH ': 'symbol': '1.2-2'}}</button>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <br>
+  <button mat-raised-button color='warn' mat-dialog-close>close</button>
+</mat-dialog-actions>

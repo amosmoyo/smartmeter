@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Iuser, Imetrics } from 'src/app/Iuser';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,10 +25,18 @@ export class DashboardComponent implements OnInit, OnChanges {
 
   time = new Date();
 
+  total2;
+
   total;
 
-  constructor(private auth: AuthService, private route: ActivatedRoute) { }
+  constructor(private auth: AuthService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
+  openDialog() {
+    if (this.total2) {
+      const info = this.total2;
+      this.dialog.open(DialogComponent, {data: {message: info, name: this.user.userName}});
+    }
+  }
   ngOnInit() {
     const data = this.route.data.subscribe({
       next: ( data ) => {
@@ -90,6 +100,11 @@ export class DashboardComponent implements OnInit, OnChanges {
     return;
   }
 
+  summaryOption(arr: Imetrics[]) {
+    const data = arr.map((x) => x.kwh * x.time * 230).reduce((acc, cur) => acc + cur, 0);
+    this.total2 = data;
+  }
+
   showAll() {
     this.filterOne = 'all';
     this.ngOnChanges();
@@ -100,6 +115,7 @@ export class DashboardComponent implements OnInit, OnChanges {
     if (this.filterOne === 'all') {
         this.allData();
     } else {
+      this.total2 = this.total;
       this.filterArray(this.filterOne);
     }
   }
@@ -119,6 +135,9 @@ export class DashboardComponent implements OnInit, OnChanges {
 
     if (this.metricsList) {
       this.total = this.getTotal(this.metricsList);
+      console.log('The data we have loaded', this.summaryOption(this.metricsList));
+      this.summaryOption(this.metricsList);
+      this.openDialog();
     }
   }
 
